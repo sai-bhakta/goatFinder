@@ -42,7 +42,7 @@ async function getPlayer(name){
             'Player': name
         }
     })
-    const data = JSON.parse(response)
+    const data = await response.json()
     console.log(data["TEAM"])
     return data;
 }
