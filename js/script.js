@@ -43,6 +43,6 @@ async function getPlayer(name){
         }
     })
     const data = await response.json()
-    console.log(data["TEAM"])
+    console.log(data)
     return data;
 }
