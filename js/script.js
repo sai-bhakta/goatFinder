@@ -30,7 +30,7 @@ async function getItemHtml(name) {
     var info = await getPlayer(name)
 
     if (typeof info !== 'string') {
-    return [true, `<td><img class='player_picture' src='${info['IMAGE']}' alt='picture of ${info["NAME"]}'></td><td>${info["NAME"]}</td><td>Description of ${info["NAME"]}</td><td>${info['TEAM']}</td>`];
+    return [true, `<td><img class='player_picture' src='${info['IMAGE']}' alt='picture of ${info["NAME"]}'></td><td>${info["NAME"]}</td><td>Description of ${info["NAME"]}</td><td>${info['TEAM_NAME']}</td>`];
     } else {
         return [false, null]
     }
@@ -43,6 +43,5 @@ async function getPlayer(name){
         }
     })
     const data = await response.json()
-    console.log(data)
     return data;
 }
