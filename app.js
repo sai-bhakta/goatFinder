@@ -4,9 +4,11 @@ const cors = require('cors')
 const nba=require('nba-api-client');
 const app=express();
 const players = require('./node_modules/nba-api-client/data/players.json');
+const { response } = require("express");
+const res = require("express/lib/response");
 
 // Setup
-app.use(cors())
+app.use(cors()) 
 
 
 // Handling get request
@@ -27,7 +29,8 @@ app.get("/api",(req,res,next)=>{
   })
 
   app.get("/player_stats", (req, res, next) => {
-    console.log(req)
+    console.log("Calculating...")
+    sendScoreResponse(req, res);
   })
  
 app.listen(5000,()=>{
@@ -85,7 +88,7 @@ async function sendResponse(player_obj, res) {
 }
 
 async function getPlayerInformationFromId(id){
-  var response = await nba.playerInfo({"PlayerID":id})
+  let response = await nba.playerInfo({"PlayerID":id})
   return_info = {}
   player_info = response["CommonPlayerInfo"]
   headline_stats = response["PlayerHeadlineStats"]
@@ -108,3 +111,35 @@ function getPlayerID(name_of_player) {
     }
   }
 }
+
+async function sendScoreResponse(req, res){
+  var players = JSON.parse(req.get("Players"));
+  var preferences = JSON.parse(req.get("Stats"));
+  var scores = await calculate_player_scores(players, preferences);
+  console.log(typeof scores)
+  console.log(JSON.stringify(scores))
+  res.status(200).end(JSON.stringify({'scores':scores}))
+}
+
+async function calculate_player_scores(players, preferences){
+  var scores = {};
+  for (let i = 0; i < players.length; i++){
+    console.log(players[i])
+    scores[players[i]] = await calculate_player_score(players[i], preferences);
+  }
+  console.log(scores);
+  return scores;
+}
+
+async function calculate_player_score(player, preferences){
+  var id = getPlayerID(player)
+  let response = await nba.playerCareerStats({"PlayerID":id['PlayerID']})
+  player_info = response["CareerTotalsRegularSeason"];
+  var score = 0;
+  for (let key in preferences){
+    score += player_info[key] * preferences[key]
+  }
+
+  return score;
+}
+
