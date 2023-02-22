@@ -1,8 +1,144 @@
 <!DOCTYPE html>
 <html>
-    <h1 style="Color: red">This is page 2</h1>    
+    <head>
+        <meta charset="UTF-8">
+        <meta name = "description" content="This is a description">
+        <title>Document</title>
+        <link rel="stylesheet" href="css/style.css">
+    </head>
     <body>
-        <p>Yo you made it to page 2 congrats!!!"</p>
-        <a href="index.html">Go back</a>
+        <div id="pagetop" class="pagetop">
+            <span class= "logo_span pagetop_span">
+                <a href = "index.html" class = "logo_link"><img class="logo" src = "https://cdn.pixabay.com/photo/2019/06/10/15/11/basketball-4264543__480.png" alt = "NBA Logo"></a>
+            </span>
+            <span class="website_name pagetop_span">
+                <a class="website_name_link" href = "index.html">GoatFinder</a>
+            </span>
+            <span class="profile_btn_span pagetop_span">
+                <button class = "profile_btn">
+                    <img class="profile_icon" src="https://cdn-icons-png.flaticon.com/512/6522/6522516.png">
+                </button>
+            </span>
+        </div>
+
+        <div class="page_title">
+            How important are these stats to you ?
+        </div>
+
+       
+        <div class="slidercontainer">
+            <span class="slider_label">GP</span>
+            <input type="range" min="-100" max="100" value="0" class="slider" id="GP_S"></input>
+            <span class="value_slider" id="GP_V">0</span>
+        </div>
+        <div class="slidercontainer">
+            <span class="slider_label">GS</span>
+            <input type="range" min="-100" max="100" value="0" class="slider" id="GS_S"></input>
+            <span class="value_slider" id="GS_V">0</span>
+        </div>
+        <div class="slidercontainer">
+            <span class="slider_label">MIN</span>
+            <input type="range" min="-100" max="100" value="0" class="slider" id="MIN_S"></input>
+            <span class="value_slider" id="MIN_V">0</span>
+        </div>
+        <div class="slidercontainer">
+            <span class="slider_label">FGM</span>
+            <input type="range" min="-100" max="100" value="0" class="slider" id="FGM_S"></input>
+            <span class="value_slider" id="FGM_V">0</span>
+        </div>
+        <div class="slidercontainer">
+            <span class="slider_label">FGA</span>
+            <input type="range" min="-100" max="100" value="0" class="slider" id="FGA_S"></input>
+            <span class="value_slider" id="FGA_V">0</span>
+        </div>
+        <div class="slidercontainer">
+            <span class="slider_label">FG_PCT</span>
+            <input type="range" min="-100" max="100" value="0" class="slider" id="FG_PCT_S"></input>
+            <span class="value_slider" id="FG_PCT_V">0</span>
+        </div>
+        <div class="slidercontainer">
+            <span class="slider_label">FG3M</span>
+            <input type="range" min="-100" max="100" value="0" class="slider" id="FG3M_S"></input>
+            <span class="value_slider" id="FG3M_V">0</span>
+        </div>
+        <div class="slidercontainer">
+            <span class="slider_label">FG3A</span>
+            <input type="range" min="-100" max="100" value="0" class="slider" id="FG3A_S"></input>
+            <span class="value_slider" id="FG3A_V">0</span>
+        </div>
+        <div class="slidercontainer">
+            <span class="slider_label">FG3_PCT</span>
+            <input type="range" min="-100" max="100" value="0" class="slider" id="FG3_PCT_S"></input>
+            <span class="value_slider" id="FG3_PCT_V">0</span>
+        </div>
+        <div class="slidercontainer">
+            <span class="slider_label">FTM</span>
+            <input type="range" min="-100" max="100" value="0" class="slider" id="FTM_S"></input>
+            <span class="value_slider" id="FTM_V">0</span>
+        </div>
+        <div class="slidercontainer">
+            <span class="slider_label">FTA</span>
+            <input type="range" min="-100" max="100" value="0" class="slider" id="FTA_S"></input>
+            <span class="value_slider" id="FTA_V">0</span>
+        </div>
+        <div class="slidercontainer">
+            <span class="slider_label">FT_PCT</span>
+            <input type="range" min="-100" max="100" value="0" class="slider" id="FT_PCT_S"></input>
+            <span class="value_slider" id="FT_PCT_V">0</span>
+        </div>
+        <div class="slidercontainer">
+            <span class="slider_label">OREB</span>
+            <input type="range" min="-100" max="100" value="0" class="slider" id="OREB_S"></input>
+            <span class="value_slider" id="OREB_V">0</span>
+        </div>
+        <div class="slidercontainer">
+            <span class="slider_label">DREB</span>
+            <input type="range" min="-100" max="100" value="0" class="slider" id="DREB_S"></input>
+            <span class="value_slider" id="DREB_V">0</span>
+        </div>
+        <div class="slidercontainer">
+            <span class="slider_label">REB</span>
+            <input type="range" min="-100" max="100" value="0" class="slider" id="REB_S"></input>
+            <span class="value_slider" id="REB_V">0</span>
+        </div>
+        <div class="slidercontainer">
+            <span class="slider_label">AST</span>
+            <input type="range" min="-100" max="100" value="0" class="slider" id="AST_S"></input>
+            <span class="value_slider" id="AST_V">0</span>
+        </div>
+        <div class="slidercontainer">
+            <span class="slider_label">STL</span>
+            <input type="range" min="-100" max="100" value="0" class="slider" id="STL_S"></input>
+            <span class="value_slider" id="STL_V">0</span>
+        </div>
+        <div class="slidercontainer">
+            <span class="slider_label">BLK</span>
+            <input type="range" min="-100" max="100" value="0" class="slider" id="BLK_S"></input>
+            <span class="value_slider" id="BLK_V">0</span>
+        </div>
+        <div class="slidercontainer">
+            <span class="slider_label">TOV</span>
+            <input type="range" min="-100" max="100" value="0" class="slider" id="TOV_S"></input>
+            <span class="value_slider" id="TOV_V">0</span>
+        </div>
+        <div class="slidercontainer">
+            <span class="slider_label">PF</span>
+            <input type="range" min="-100" max="100" value="0" class="slider" id="PF_S"></input>
+            <span class="value_slider" id="PF_V">0</span>
+        </div>
+        <div class="slidercontainer">
+            <span class="slider_label">PTS</span>
+            <input type="range" min="-100" max="100" value="0" class="slider" id="PTS_S"></input>
+            <span class="value_slider" id="PTS_V">0</span>
+        </div>
+                
+        <div class="next_btn_2_div">
+            <button id="submit_btn" type="button" class="submit_btn">Submit</button>
+        </div>
+
+        <div class="padding_p_2"></div>
+        
+
+                
+        <script src="js/script_p2.js"></script>
     </body>
-</html>

@@ -20,44 +20,73 @@
                 </button>
             </span>
         </div>
-        <div>
-            Type Player Name Here:
+        <div class="player_not_found_div">
+            <span class = "player_not_found" id = "player_not_found">Player not found!</span>                
+            <a class="next_btn" href="./page2.html">
+                Next >
+            </a>
         </div>
-        <div>
-            <!-- <form>
-                <input id="form1" type="text" name="Player" id="player_form">
-            </form> -->
-            <span id="form1">Kobe Bryant</span>
-            <button id="submit_btn" type="button" class="submit_btn">Submit</button>
+        <div class="input_div">
+                <input onkeydown="submitForm(event)" oninput="updateSearchList()" class = "player_form" id="form1" type="text" name="Player" id="player_form" placeholder="Type Player Name Here..." autocomplete="off">
+                <span class="submit_btn_span">
+                    <button id="submit_btn" type="button"  class="submit_btn">Add Player</button>
+                </span>
+        </div>
+        <div class="search_div">
+            <ul class="search_list" id="search_list"></ul>
+            <span class="space_holder"></span>
+        </div>
+        <div class = "submit_btn_div">
+        </div>
+        <div class = "table_head">
+            Players
+        </div>
 
-            <span class = "player_not_found" id = "player_not_found">Player not found!</span>
-        </div>
-        <div>
-            Your Players:
-        </div>
-
-        <table class = "player_table" id="player_table">
-            <tr></tr>
-                <th>
-                    <span class="table_label picture_label">
+        <table cellspacing = 0 class = "player_table" id="player_table">
+            <tr class = "row_headers">
+                <th class="table_label picture_label">
+                    <span>
                         Picture
                     </span>
                 </th>
-                <th>
-                    <span class="table_label name_label">
+                <th class="table_label number_label">
+                    <span>
+                        #
+                    </span>
+                </th>
+                <th class="table_label name_label">
+                    <span>
                         Name
                     </span>
                 </th>
-                <th>
-                    <span class="table_label description_label">
-                        Description
-                    </span>
-                </th>
-                <th>
-                    <span class="table_label team_label">
+                <th class="table_label team_label">
+                    <span>
                         Team
                     </span>
                 </th>
+                <th class="table_label position_label">
+                    <span>
+                        Position
+                    </span>
+                </th>
+                <th class="table_label points_label">
+                    <span>
+                        PPG
+                    </span>
+                </th>
+                <th class="table_label assist_label">
+                    <span>
+                        Assists
+                    </span>
+                </th>
+                <th class="table_label rebounds_label">
+                    <span>
+                        Rebounds
+                    </span>
+                </th>
+            </tr>
         </table>
+
+        
         <script src="js/script.js"></script>
     </body>

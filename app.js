@@ -3,8 +3,7 @@ const express=require("express")
 const cors = require('cors')
 const nba=require('nba-api-client');
 const app=express();
-const players = require('./Players.json')
-const teams = require('./Teams.json')
+const players = require('./node_modules/nba-api-client/data/players.json');
 
 // Setup
 app.use(cors())
@@ -16,7 +15,7 @@ app.get("/api",(req,res,next)=>{
   var player = req.headers['player']
 
   // Get Player Dict from Name
-  var player_obj = nba.getPlayerID(player)
+  var player_obj = getPlayerID(player)
   
   //Check if player was found
   if (player_obj !== undefined) {
@@ -26,7 +25,10 @@ app.get("/api",(req,res,next)=>{
     console.log("Couldnt find player")
   }
   })
-  
+
+  app.get("/player_stats", (req, res, next) => {
+    console.log(req)
+  })
  
 app.listen(5000,()=>{
     console.log("Server is Running");
@@ -47,13 +49,34 @@ async function sendResponse(player_obj, res) {
   return_json['ID'] = id
   return_json['IMAGE'] = `https://ak-static.cms.nba.com/wp-content/uploads/headshots/nba/latest/260x190/${id}.png`
   return_json['NAME'] = name;
-  return_json['JERSEY'] = jersey;
-  return_json['POSITION'] = position;
-  return_json['TEAM_ID'] = team_id;
-  return_json['TEAM_NAME'] = team_name;
-  return_json['PTS'] = pts;
-  return_json['AST'] = ast;
-  return_json['REB'] = reb;
+  if (jersey)
+    return_json['JERSEY'] = jersey;
+  else
+  return_json['JERSEY'] = 'N/A';
+  if (position)
+    return_json['POSITION'] = position;
+  else
+    return_json['POSITION'] = "N/A";
+  if (position)
+    return_json['TEAM_ID'] = team_id;
+  else
+    return_json['TEAM_ID'] = "N/A";
+  if (team_name)
+    return_json['TEAM_NAME'] = team_name;
+  else
+  return_json['TEAM_NAME'] = "N/A";
+  if (pts)
+    return_json['PTS'] = pts;
+  else
+    return_json['PTS'] = 'N/A';
+  if (ast)
+    return_json['AST'] = ast;
+  else
+    return_json['AST'] = 'N/A'
+  if (reb)
+    return_json['REB'] = reb;
+  else
+    return_json['REB'] = "N/A";
 
   res.status(200).end(JSON.stringify(return_json))
   console.log("Sent Information")
@@ -78,8 +101,10 @@ async function getPlayerInformationFromId(id){
   ]
 }
 
-function searchByKey(map, route) {
-  return map[route] ? map[route] : 'not found' //return 'not found' when an invalid key is given
+function getPlayerID(name_of_player) {
+  for (let name in players){
+    if (name_of_player.toLowerCase() === name.toLowerCase()) {
+      return players[name]
+    }
+  }
 }
-
-
