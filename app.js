@@ -118,7 +118,7 @@ async function sendScoreResponse(req, res){
   var scores = await calculate_player_scores(players, preferences);
   console.log(typeof scores)
   console.log(JSON.stringify(scores))
-  res.status(200).end(JSON.stringify({'scores':scores}))
+  res.status(200).end(JSON.stringify({'SCORES':scores}))
 }
 
 async function calculate_player_scores(players, preferences){
@@ -127,7 +127,6 @@ async function calculate_player_scores(players, preferences){
     console.log(players[i])
     scores[players[i]] = await calculate_player_score(players[i], preferences);
   }
-  console.log(scores);
   return scores;
 }
 

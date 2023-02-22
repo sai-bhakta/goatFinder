@@ -1,3 +1,4 @@
+
 stats = {'GP': 0,
 'GS': 0,
 'MIN': 0,
@@ -159,7 +160,7 @@ async function sendPlayersAndOptions() {
             'Stats' : JSON.stringify(stats)
         }
     })
-    var json_data = response.json()
-    console.log(json_data['scores'])
+    var json_data = await response.json()
+    console.log(json_data["SCORES"])
 }
 
