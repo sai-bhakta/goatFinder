@@ -6,6 +6,27 @@ const app=express();
 const players = require('./node_modules/nba-api-client/data/players.json');
 const { response } = require("express");
 const res = require("express/lib/response");
+const max_stats = {'GP': 1611,
+'GS': 1471.0,
+'MIN': 57446.0,
+'FGM': 15837.0,
+'FGA': 28307.0,
+'FG_PCT': 1.0,
+'FG3M': 3302.0,
+'FG3A': 7681.0,
+'FG3_PCT': 1.0,
+'FTM': 9787.0,
+'FTA': 13188.0,
+'FT_PCT': 1.0,
+'OREB': 6731.0,
+'DREB': 11453.0,
+'REB': 23924.0,
+'AST': 15806.0,
+'STL': 3265.0,
+'BLK': 3830.0,
+'TOV': 4935.0,
+'PF': 4657.0,
+'PTS':40000.0}
 
 // Setup
 app.use(cors()) 
@@ -132,11 +153,14 @@ async function calculate_player_scores(players, preferences){
 
 async function calculate_player_score(player, preferences){
   var id = getPlayerID(player)
-  let response = await nba.playerCareerStats({"PlayerID":id['PlayerID']})
+  let response = await nba.playerCareerStats({"PlayerID":id['PlayerID'], "PerMode":"Totals"})
   player_info = response["CareerTotalsRegularSeason"];
-  var score = 0;
+  var score = 0.0;
   for (let key in preferences){
-    score += player_info[key] * preferences[key]
+    console.log(player_info[key])
+    console.log(max_stats[key])
+    console.log(preferences[key])
+    score += (player_info[key]/max_stats[key]) * (preferences[key] * 0.01)
   }
 
   return score;
