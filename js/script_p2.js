@@ -154,6 +154,8 @@ submit_btn.addEventListener("click", sendPlayersAndOptions)
 
 
 async function sendPlayersAndOptions() {
+    var loader = document.getElementById("loader")
+    loader.style.display = "inline-block"
     var response = await fetch('http://localhost:5000/player_stats', {
         headers: {
             'Players' : sessionStorage.getItem("Players"),
@@ -161,6 +163,7 @@ async function sendPlayersAndOptions() {
         }
     })
     var json_data = await response.json()
-    console.log(json_data["SCORES"])
+    sessionStorage.setItem("PlayerResutls", JSON.stringify(json_data["SCORES"]))
+    console.log(sessionStorage.getItem("PlayerResutls"))
+    window.location.replace("page3.html")
 }
-
