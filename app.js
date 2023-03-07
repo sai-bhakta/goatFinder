@@ -156,10 +156,13 @@ async function calculate_player_score(player, preferences){
   let response = await nba.playerCareerStats({"PlayerID":id['PlayerID'], "PerMode":"Totals"})
   player_info = response["CareerTotalsRegularSeason"];
   var score = 0.0;
+  return_dict = {};
   for (let key in preferences){
-    score += (player_info[key]/max_stats[key]) * (preferences[key] * 0.01)
+    score_key = (player_info[key]/max_stats[key]) * (preferences[key] * 0.01)
+    score += score_key;
+    return_dict[key] = score_key;
   }
-
-  return score;
+  return_dict['Score'] = score;
+  return return_dict;
 }
 
