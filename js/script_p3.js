@@ -27,7 +27,7 @@ function create_data_set(info){
         if (key == 'Score'){
           data['stack'] = 'Stack 1';
         } else {
-          data['stack'] = 'Stack 0';
+          data['stack'] = 'Stack 0'; 
         }
         data_sets.push(data);
         color_temp = '#'+(Math.random() * 0xFFFFFF << 0).toString(16).padStart(6, '0');
